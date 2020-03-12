@@ -1,0 +1,10 @@
+D:\Projects\IdentityJWT\Activity3\Data\bin\Debug\netcoreapp3.1\Data.deps.json
+D:\Projects\IdentityJWT\Activity3\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
+D:\Projects\IdentityJWT\Activity3\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
+D:\Projects\IdentityJWT\Activity3\Data\bin\Debug\netcoreapp3.1\Data.dll
+D:\Projects\IdentityJWT\Activity3\Data\bin\Debug\netcoreapp3.1\Data.pdb
+D:\Projects\IdentityJWT\Activity3\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+D:\Projects\IdentityJWT\Activity3\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+D:\Projects\IdentityJWT\Activity3\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+D:\Projects\IdentityJWT\Activity3\Data\obj\Debug\netcoreapp3.1\Data.dll
+D:\Projects\IdentityJWT\Activity3\Data\obj\Debug\netcoreapp3.1\Data.pdb

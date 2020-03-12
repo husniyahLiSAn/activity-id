@@ -1,0 +1,113 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore
+@using System.Threading
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Page"] = "Home";
+    ViewData["Title"] = "To Do List";
+    Layout = "~/Views/Shared/_ViewLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h2><b>To Do Lists by @HttpContextAccessor.HttpContext.Session.GetString("Name")</b></h2>
+                <form>
+                    <div class="form-group col col-md-6">
+                        <input type="text" class="form-control" id="Name" placeholder="What you want to do?" required />
+                    </div>
+                    <div class="col col-md-3">
+                        <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();"><i class="fa fa-plus" title="Add"></i></button>
+                    </div>
+                </form>
+                <div class="col col-md-6 align-content-md-center">
+                    <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Excel", "Home")'"><i class="fa fa-download" title="Export to Excel"></i> Excel</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("CSV", "Home")'"><i class="fa fa-download" title="Export to CSV"></i> CSV</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.open('@Url.Action("Report", "Home", "_blank")')"><i class="fa fa-download" title="Export to PDF"></i> PDF</button>
+                </div>
+                <hr />
+                <h3>All Activities</h3>
+                <div class="table-responsive">
+                    <table id="tblLists" class="table table-striped table-bordered dt-responsive nowrap">
+                        <thead style="background-color:mediumslateblue; color:aliceblue">
+                            <tr>
+                                <th>Check</th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    <select id="selectActivityStatus" class="form-control">
+                                        <option value="3">Status</option>
+                                        <option value="2">All</option>
+                                        <option value="0">Active</option>
+                                        <option value="1">Completed</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="tbody" style="color:black"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Activity</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" class="form-control" id="Id" placeholder="Id" disabled="disabled" />
+                    <div class="form-group">
+                        <label for="Activity">Activity Name</label>
+                        <input type="text" class="form-control" id="Activity" placeholder="What you want to do?" />
+                    </div>
+                    @*<div class="form-group">
+                            <label for="Status">Status</label>
+                            <select id="Status" class=" form-control">
+                                <option>--  Select Status  --</option>
+                                <option id="false">Active</option>
+                                <option id="true">Completed</option>
+                            </select>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="return Update();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<!--This page plugins -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.min.css">
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">*@
+
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<link href="~/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/dist/js/pages/datatable/datatable-basic.init.js"></script>
+@*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />*@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js "></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="~/js/todo.js"></script>
